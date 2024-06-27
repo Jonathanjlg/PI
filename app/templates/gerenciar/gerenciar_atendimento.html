@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>ALPHA INFOSYSTEM - Gerenciar Atendimento</title>
+<!-- Adicionando Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Estilo personalizado para checkboxes redondos */
+    input[type="checkbox"] {
+      display: none;
+    }
+    input[type="checkbox"] + label {
+      position: relative;
+      padding-left: 35px;
+      cursor: pointer;
+      line-height: 20px;
+      display: inline-block;
+    }
+    input[type="checkbox"] + label:before, input[type="checkbox"] + label:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all 0.2s;
+    }
+    input[type="checkbox"] + label:before {
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #007bff;
+      background-color: #fff;
+    }
+    input[type="checkbox"]:checked + label:before {
+      background-color: #007bff;
+    }
+    input[type="checkbox"]:checked + label:after {
+      content: '\2713';
+      left: 4px;
+      top: 2px;
+      font-size: 16px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="text-center">Gerenciar Atendimento</h1>
+  <form>
+    <div class="row">
+      <!-- Seção esquerda -->
+      <div class="col-md-6">
+        <fieldset class="border p-3">
+          <div class="form-group">
+            <label for="cpfCliente">Adicionar um protocolo existente:</label>
+            <input type="text" class="form-control" id="protocolo" name="protocolo" placeholder="Ex.: 20241106">
+          </div>
+          <div class="form-group">
+            <label for="cpfCliente">CPF/CNPJ do cliente:</label>
+            <input type="text" class="form-control" id="cpfCliente" name="cpfCliente" placeholder="Ex.: 000.000.000-00">
+          </div>
+          <div class="form-group">
+            <label for="equipamento">Equipamento:</label>
+            <input type="text" class="form-control" id="equipamento" name="equipamento" placeholder="Ex.: Notebook Inspiron 5566">
+          </div>
+          <div class="form-group">
+            <label for="marca">Marca:</label>
+            <input type="text" class="form-control" id="marca" name="marca" placeholder="Ex.: Dell">
+          </div>
+          <div class="form-group">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="Ex.: 1" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label for="acessorios">Acessórios:</label>
+            <div id="acessorios-container">
+              <div class="acessorio-item d-flex mb-2">
+                <input type="text" class="form-control mr-2" name="acessorios[]" placeholder="Ex.: Mouse Pad">
+                <input type="number" class="form-control mr-2" name="quantidadeAcessorios[]" placeholder="Qtd" min="1" step="1">
+                <button type="button" class="btn btn-danger btn-sm remove-acessorio">Remover</button>
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary mt-2" id="add-acessorio">Adicionar Acessório</button>
+          </div>
+          <div class="form-group">
+            <label for="observacoes">Observações:</label>
+            <textarea class="form-control" id="observacoes" name="observacoes" rows="3" placeholder="Ex.: Avarias na estrutura"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Adicionar ao protocolo</button>
+        </fieldset>
+      </div>
+      <!-- Seção direita -->
+      <div class="col-md-6">
+        <fieldset class="border p-3">
+          <legend class="w-auto"></legend>
+          <div class="form-group">
+            <div class="container mt-5">
+                <div class="form-group">
+                    <label for="situacao">Alterar situação do protocolo:</label>
+                    <input type="text" class="form-control" id="situacao" name="situacao" placeholder="Ex. : 20241106">
+                  </div>                
+                  <ul class="list-group">
+                  <li class="list-group-item">
+                    <input type="checkbox" id="entrada" checked>
+                    <label for="entrada" class="ml-2">Entrada</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input type="checkbox" id="avaliacaoTecnico">
+                    <label for="avaliacaoTecnico" class="ml-2">Avaliação do técnico</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input type="checkbox" id="reparoAutorizado">
+                    <label for="reparoAutorizado" class="ml-2">Reparo autorizado pelo cliente</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input type="checkbox" id="reparoFinalizado">
+                    <label for="reparoFinalizado" class="ml-2">Reparo Finalizado</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input type="checkbox" id="PagamentoEfetuado">
+                    <label for="PagamentoEfetuado" class="ml-2">Pagamento realizado</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input type="checkbox" id="disponivelRetirada">
+                    <label for="disponivelRetirada" class="ml-2">Disponível para retirada</label>
+                  </li>
+                  <li class="list-group-item">
+                    <input type="checkbox" id="personalizado">
+                    <label for="personalizado" class="ml-2">Personalizado:</label>
+                    <input type="text" id="personalizadoComentario" class="custom-input form-control" placeholder="Ex.: Aguardando Peças">
+                  </li>
+                  <li class="list-group-item">
+                    <label for="dataSituacao" class="ml-2">Data da situação:</label>
+                    <input type="date" class="form-control" id="dataSituacao" name="dataSituacao">
+                  </li>
+                  
+                </ul>
+                <p></p>
+                <p></p>
+            <button type="submit" class="btn btn-primary">Aplicar</button>
+          </fieldset>
+        </fieldset>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Adicione os scripts do Bootstrap e jQuery aqui -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          checkboxes.forEach(cb => {
+            if (cb !== this) {
+              cb.checked = false;
+            }
+          });
+        }
+      });
+    });
+
+    document.getElementById('add-acessorio').addEventListener('click', function() {
+      const container = document.getElementById('acessorios-container');
+      const newAcessorio = document.createElement('div');
+      newAcessorio.classList.add('acessorio-item', 'd-flex', 'mb-2');
+      newAcessorio.innerHTML = `
+        <input type="text" class="form-control mr-2" name="acessorios[]" placeholder="Ex.: Mouse Pad">
+        <input type="number" class="form-control mr-2" name="quantidadeAcessorios[]" placeholder="Qtd" min="1" step="1">
+        <button type="button" class="btn btn-danger btn-sm remove-acessorio">Remover</button>
+      `;
+      container.appendChild(newAcessorio);
+      attachRemoveEvent(newAcessorio.querySelector('.remove-acessorio'));
+    });
+
+    function attachRemoveEvent(button) {
+      button.addEventListener('click', function() {
+        this.parentElement.remove();
+      });
+    }
+
+    // Attach remove event to the initial accessory remove button
+    attachRemoveEvent(document.querySelector('.remove-acessorio'));
+  });
+</script>
+</body>
+</html>

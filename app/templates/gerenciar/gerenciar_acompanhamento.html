@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamento</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #2a2a2a;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo {
+            max-width: 100px;
+        }
+        .form-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Adicionado para alinhar verticalmente */
+        }
+        .form-group {
+            text-align: center;
+        }
+        .form-control {
+            border-radius: 50px;
+            background-color: #e9f5fe;
+            border: 2px solid #6995BD;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: #6995BD;
+            width: 300px; /* Ajuste de largura */
+            max-width: 100%; /* Garantir que não ultrapasse a largura máxima */
+            margin-bottom: 10px; /* Espaçamento inferior */
+        }
+        .btn-primary {
+            background-color: #6995BD;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer; /* Mostrar cursor como ponteiro */
+        }
+        .btn-primary:hover {
+            background-color: #567ba7;
+        }
+        .card {
+            display: none; /* Inicialmente oculto */
+            margin: 20px auto;
+            max-width: 600px;
+            border: none;
+        }
+        .card-header {
+            background-color: #6995BD;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        .status-item i, .status-item span.emoji {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .status-item.completed i {
+            color: #28a745;
+        }
+        .status-item i {
+            color: #6995BD;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="app\static\imgs\LOGO P2.png" alt="Alpha Infosystem" class="logo">
+            <h2>Acompanhamento</h2>
+        </div>
+        <div class="form-container">
+            <form id="protocolForm">
+                <div class="form-group">
+                    <label for="protocolInput" class="h5">Digite o protocolo</label>
+                    <input type="text" class="form-control" id="protocolInput" placeholder="Ex.: 20240607">
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+            <div class="card" id="protocolCard">
+                <div class="card-header">
+                    Progresso
+                </div>
+                <div class="card-body" id="protocolCardBody">
+                    <!-- Aqui serão adicionados os itens de status via JavaScript -->
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Desenvolvido por alunos do SENAC Jessé Freire | Brasília - DF</p>
+            <p>Projeto Integrador | Técnico em informática - 2024</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('protocolForm');
+            const card = document.getElementById('protocolCard');
+            const cardBody = document.getElementById('protocolCardBody');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Evita o envio do formulário
+                const protocolInput = document.getElementById('protocolInput').value;
+
+                // Simulação de busca de dados (aqui você pode inserir sua lógica real de busca)
+                const fakeData = [
+                    { emoji: '🔄', text: '07/06/2024 - Disponível para retirada' },
+                    { emoji: '☑️', text: '06/06/2024 - Reparo Finalizado' },
+                    { emoji: '💲', text: '04/06/2024 - Reparo autorizado pelo cliente' },
+                    { emoji: '🔍', text: '03/06/2024 - Avaliação do técnico' },
+                    { emoji: '📥', text: '31/05/2024 - Entrada' }
+                ];
+
+                // Limpa o conteúdo atual
+                cardBody.innerHTML = '';
+
+                // Adiciona os itens de status ao card
+                fakeData.forEach(item => {
+                    const statusItem = document.createElement('div');
+                    statusItem.classList.add('status-item');
+                    if (item.emoji === '🔄' || item.emoji === '☑️') {
+                        statusItem.classList.add('completed');
+                    }
+                    statusItem.innerHTML = `<span class="emoji">${item.emoji}</span><span>${item.text}</span>`;
+                    cardBody.appendChild(statusItem);
+                });
+
+                // Mostra o card com as informações
+                card.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

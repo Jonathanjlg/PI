@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Técnico</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Open Sans', sans-serif;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 250px;
+            height: auto;
+        }
+
+        h1 {
+            color: #495867;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        label {
+            color: #495867;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            border-color: #6995BD;
+            box-shadow: 0 0 0 0.2rem rgba(105, 149, 189, 0.25);
+        }
+
+        .btn-custom {
+            background-color: #6995BD;
+            color: #ffffff;
+            border-color: #6995BD;
+            width: 100%;
+            margin-top: 20px;
+            height: 45px;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888888;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 10px 0;
+        }
+
+        footer a {
+            color: #888888;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="static/imgs/Logo P2.png" alt="Logo" width="250">
+        </div>
+        <h1 class="text-primary">Cadastro de Técnico</h1>
+        <form method="post">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                {{ form.nome(class="form-control", id="nome") }}
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                {{ form.email(class="form-control", id="email") }}
+            </div>
+            <div class="form-group">
+                <label for="nivel_id">Nível</label>
+                {{ form.nivel_id(class="form-control", id="nivel_id") }}
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                {{ form.cpf(class="form-control", id="cpf") }}
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                {{ form.telefone(class="form-control", id="telefone") }}
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                {{ form.senha(class="form-control", id="senha", type="password") }}
+            </div>
+            <div class="form-group">
+                <label for="confirmar_senha">Confirmar Senha</label>
+                {{ form.confirmar_senha(class="form-control", id="confirmar_senha", type="password") }}
+            </div>
+            <button type="submit" class="btn btn-custom">Cadastrar</button>
+        </form>
+
+        {% if request.method == 'POST' %}
+            <script>
+                // Limpa o campo de texto após o envio do formulário
+                document.getElementById("nome").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("nivel_id").value = "";
+                document.getElementById("cpf").value = "";
+                document.getElementById("telefone").value = "";
+                document.getElementById("senha").value = "";
+                document.getElementById("confirmar_senha").value = "";
+            </script>
+        {% endif %}
+    </div>
+    <footer>
+        Desenvolvido por alunos do SENAC Jessé Freire | Brasília - DF<br>
+        Projeto Integrador | Técnico em Informática - 2024
+    </footer>
+
+    <!-- Scripts do Bootstrap via CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

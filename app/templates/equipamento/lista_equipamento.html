@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipamentos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Open Sans', sans-serif;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            flex: 1; /* Utiliza todo o espaço disponível */
+        }
+
+        .logo img {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #495867;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 40px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #495867;
+            color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #6995BD;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: auto; /* Fica no final da página */
+            padding: 10px 0;
+            background-color: #f5f5f5;
+            text-align: center;
+            font-size: 14px;
+            color: #888888;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="logo">
+            <img src="static/imgs/Logo P2.png" alt="Logo" width="100"> <!-- Substitua "path/to/logo.png" pelo caminho correto do seu logo -->
+        </div>
+        <h1 class="mb-4">Lista de Equipamentos</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Equipamento</th>
+                    <th>Marca</th>
+                    <th>Quantidade</th>
+                    <th>Acessórios</th>
+                    <th>Observações</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for equipamento in equipamentos %}
+                    <tr>
+                        <td>{{ equipamento.id }}</td>
+                        <td>{{ equipamento.nome }}</td>
+                        <td>{{ equipamento.marca }}</td>
+                        <td>{{ equipamento.quantidade }}</td>
+                        <td>{{ equipamento.acessorios }}</td>
+                        <td>{{ equipamento.observacoes }}</td>
+                        <td>
+                            <a href="#">alterar</a> | <a href="#">excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Rodapé -->
+    <footer>
+        Desenvolvido por alunos do SENAC Jessé Freire | Brasília - DF<br>
+        Projeto Integrador | Técnico em informática - 2024
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

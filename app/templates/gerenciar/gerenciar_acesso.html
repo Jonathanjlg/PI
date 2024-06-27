@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Acesso - Administrador</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card-header, .btn-primary, .btn-danger {
+            background-color: #6995BD;
+        }
+        .btn-danger {
+            background-color: #C0392B;
+        }
+        .form-control:disabled, .form-control[readonly] {
+            background-color: #e9ecef;
+            opacity: 1;
+        }
+        .logo {
+            width: 100px; /* Adjust the size as needed */
+            margin-bottom: 10px;
+        }
+        .header-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-title img {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card mx-auto" style="max-width: 600px;">
+            <div class="card-header text-center text-white">
+                <div class="header-title">
+                    <img src="" alt="Logo" width="250" >
+                    <h3>Controle de Acesso - Administrador</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="emailTecnico">E-mail do Técnico:</label>
+                        <input type="email" class="form-control" id="emailTecnico" placeholder="email@email.com">
+                    </div>
+                    <div class="text-center my-3">
+                        <span>OU</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpfTecnico">CPF do Técnico:</label>
+                        <input type="text" class="form-control" id="cpfTecnico" placeholder="000.000.000-00">
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary">Buscar</button>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Dados encontrados:</h5>
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" class="form-control" id="nome" value="Fulano da Silva" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" class="form-control" id="cpf" value="000.000.000-00" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" class="form-control" id="email" value="email@senac.br" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone:</label>
+                            <input type="text" class="form-control" id="telefone" value="(61) 9.9999-9999" readonly>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="administrador">
+                            <label class="form-check-label" for="administrador">Administrador</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary">Salvar</button>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn btn-danger">Excluir Técnico</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <small>Desenvolvido por alunos do SENAC Jessé Freire | Brasília - DF</small><br>
+            <small>Projeto Integrador | Técnico em informática - 2024</small>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

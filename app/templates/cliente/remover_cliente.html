@@ -1,0 +1,24 @@
+{% extends "cliente/base_cliente.html" %}
+
+{% block conteudo %}
+<div class="container mt-4">
+   <div class="row justify-content-center">
+     <div class="col-md-6">
+       <div class="card" style="background-color: #f2f5f8; border-color:  #f2f5f8;">
+         <div class="card-header" style="background-color: #fcfdfd; color: rgb(0, 0, 0); text-align: center;">
+           <img src="{{ url_for('static', filename='imgs/Logo P2.png') }}" alt="Logo" style="height: 150px; margin-right: 20px;">
+           <h5 class="card-title mb-0">Você tem certeza que deseja remover o cliente abaixo?</h5>
+         </div>
+         <div class="card-body text-center"> <!-- Adicionando classe text-center para centralizar -->
+            <h4 class="card-title">ID: {{ cliente.id }}</h4>
+            <h5>Nome: {{ cliente.nome }}</h5>
+         </div>
+         <form method="post" action="{{ url_for('remover_cliente', id=cliente.id) }}" class="text-center mb-3"> <!-- Adicionando ação para remover cliente -->
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button class="btn btn-danger" type="submit" style="background-color: #dc3545; border-color: #bd2130;">Remover</button>
+        </form>
+      </div>
+     </div>
+   </div>
+</div>
+{% endblock conteudo %}

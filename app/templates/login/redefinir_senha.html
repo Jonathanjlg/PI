@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redefinir Senha</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .password-reset-container {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .btn-custom {
+      background-color: #6995BD;
+      color: #ffffff;
+      border: none;
+    }
+    .btn-custom:hover {
+      background-color: #5985a8;
+    }
+  </style>
+</head>
+<body>
+  <div class="password-reset-container">
+    <img src="static/imgs/LOGO P2.png" alt="Logo" width="150" class="mb-3"> <!-- Verifique o caminho da logo -->
+    <h1 class="h4">Redefinir senha</h1>
+    <form action="/submit-email-address" method="post">
+      <div class="form-group">
+        <label for="email">Seu e-mail de acesso:</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+      </div>
+      <p>Você irá receber um e-mail no endereço informado acima contendo o procedimento para criar uma nova senha.</p>
+      <button type="submit" class="btn btn-custom btn-block">ENVIAR</button>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
